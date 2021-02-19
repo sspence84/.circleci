@@ -22,9 +22,19 @@ jobs: # we now have TWO jobs, so that a workflow can coordinate them!
       - run: echo "A more familiar hi" # We run a similar echo command to above.
       - run: sleep 15 # and then sleep for 15 seconds.
 # Under the workflows: map, we can coordinate our two jobs, defined above.
+  three: # my third added job
+    docker: # no clue what this is???
+      - image: circleci/ruby:2.4.1 # docker image, whats that mean?
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD # whose user name and password is this? should i be using mine?
+         steps:
+          -checkout
+          -run: echo "this is my first attempt at writing a job in circleci myself"
 workflows:
   version: 2
-  one_and_two: # this is the name of our workflow
+  one_and_two_and_three: # this is the name of our workflow
     jobs: # and here we list the jobs we are going to run.
       - one
       - two
+      - three

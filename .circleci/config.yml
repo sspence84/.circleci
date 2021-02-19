@@ -29,8 +29,8 @@ jobs: # we now have TWO jobs, so that a workflow can coordinate them!
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD # whose user name and password is this? should i be using mine?
     steps:
-          -checkout
-          -run: echo "this is my first attempt at writing a job in circleci myself"
+        - checkout
+        - run: echo "this is my first attempt at writing a job in circleci myself"
 workflows:
   version: 2
   one_and_two_and_three: # this is the name of our workflow
